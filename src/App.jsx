@@ -1,122 +1,86 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiInstagram, FiMail, FiGlobe, FiMapPin, FiTwitter, FiYoutube, FiExternalLink } from 'react-icons/fi';
+import { LoadingScreen } from './components/LoadingScreen';
+import { ProfileHeader } from './components/ProfileHeader';
+import { LinkItem } from './components/LinkItem';
+import { FooterComponent } from './components/Footer';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const links = [
+    { id: 1, title: 'Official Website DPM FK UNTAR', url: '#', icon: <FiGlobe size={20} /> },
+    { id: 2, title: 'Pendaftaran Anggota Baru', url: '#', icon: <FiMail size={20} /> },
+    { id: 3, title: 'Lokasi Sekretariat', url: '#', icon: <FiMapPin size={20} /> },
+  ];
+
+  const socialLinks = [
+    { id: 1, icon: <FiInstagram size={22} />, url: '#', label: 'Instagram' },
+    { id: 2, icon: <FiTwitter size={22} />, url: '#', label: 'Twitter' },
+    { id: 3, icon: <FiYoutube size={22} />, url: '#', label: 'YouTube' },
+  ];
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+    <AnimatePresence mode="wait">
+      {isLoading ? (
+        <LoadingScreen key="loading" />
+      ) : (
+        <motion.main 
+          key="content"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="relative min-h-screen bg-brand-bg px-4 py-12 flex flex-col items-center justify-between overflow-hidden"
         >
-          Count is {count}
-        </button>
-      </section>
+          {/* Background Decorative Glow (Menghidupkan efek Glassmorphism) */}
+          <div className="absolute top-10 left-1/2 -translate-x-1/2 w-72 h-72 bg-brand-primary/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-10 right-10 w-64 h-64 bg-blue-300/20 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="ticks"></div>
+          <div className="w-full max-w-md flex flex-col items-center relative z-10">
+            <ProfileHeader />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+            <nav className="w-full space-y-3.5 mb-10">
+              {links.path ? null : links.map((link, index) => (
+                <LinkItem 
+                  key={link.id} 
+                  title={link.title} 
+                  url={link.url} 
+                  icon={link.icon} 
+                  index={index}
+                  FiExternalLink={FiExternalLink} 
+                />
+              ))}
+            </nav>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="flex gap-4"
+            >
+              {socialLinks.map((social) => (
+                <a 
+                  key={social.id}
+                  href={social.url} 
+                  aria-label={social.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-white/70 backdrop-blur-md border border-white/50 rounded-full text-brand-text hover:text-brand-primary hover:scale-110 hover:-translate-y-1 transition-all shadow-sm"
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </motion.div>
+          </div>
+
+          <FooterComponent />
+        </motion.main>
+      )}
+    </AnimatePresence>
+  );
 }
-
-export default App
