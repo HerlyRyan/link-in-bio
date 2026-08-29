@@ -1,17 +1,30 @@
 @import "tailwindcss";
 
-/* Konfigurasi Tema Tailwind v4 */
 @theme {
-  --color-brand-bg: #f3f4f6;
-  --color-brand-primary: #2563eb;
-  --color-brand-secondary: #dbeafe;
-  --color-brand-text: #1f2937;
-  --color-brand-card: #ffffff;
+  /* Palet Spring Picnic dari Client */
+  --color-brand-bg: #FCE4EE;       /* Pink sangat muda untuk background */
+  --color-brand-primary: #56AA3E;  /* Hijau tua segar untuk elemen utama */
+  --color-brand-secondary: #9BD266;/* Hijau muda untuk aksen */
+  --color-brand-accent: #FF76A4;   /* Pink cerah untuk tombol/badge */
+  --color-brand-card: #FFFFFF;     /* Putih bersih untuk card */
+  --color-brand-text: #2D3748;     /* Abu-abu gelap agar mudah dibaca */
 }
 
-/* Base Styles */
 body {
   background-color: var(--color-brand-bg);
   color: var(--color-brand-text);
   font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Custom Sleek Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(252, 228, 238, 0.5);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #56AA3E;
+  border-radius: 9999px;
 }
