@@ -1,9 +1,5 @@
 import { AiFillTikTok } from "react-icons/ai";
-import {
-  FiInstagram,
-  FiMail,
-  FiInfo,
-} from "react-icons/fi";
+import { FiInstagram, FiMail, FiInfo, FiMessageSquare } from "react-icons/fi";
 
 export const mainLinks = [
   {
@@ -13,6 +9,13 @@ export const mainLinks = [
     type: "internal",
     action: "vision",
     featured: true,
+  },
+  {
+    id: "aspirasi-fkuntar",
+    title: "Aspirasi FK UNTAR",
+    icon: FiMessageSquare,
+    type: "external",
+    url: "https://bit.ly/Aspirasi-blok",
   },
   {
     id: "email",

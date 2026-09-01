@@ -128,8 +128,8 @@ export const VisionMissionModal = ({ isOpen, onClose }) => {
               relative
 
               flex
-              h-135
-              sm:h-145
+              h-125
+              sm:h-135
 
               max-h-[85dvh]
               w-full
@@ -185,7 +185,8 @@ export const VisionMissionModal = ({ isOpen, onClose }) => {
                     className="
                       truncate
                       text-base
-                      font-bold
+                      font-semibold
+                      tracking-[-0.01em]
                       text-brand-text
 
                       sm:text-lg
@@ -198,8 +199,9 @@ export const VisionMissionModal = ({ isOpen, onClose }) => {
                     id="vision-modal-section"
                     className="
                       mt-0.5
-                      text-xs
-                      text-brand-text/60
+                      text-[11px]
+                      font-medium
+                      text-brand-muted
                     "
                   >
                     {sections[currentIndex].label} · {currentIndex + 1} dari{" "}
@@ -385,8 +387,14 @@ export const VisionMissionModal = ({ isOpen, onClose }) => {
                   <span className="hidden sm:inline">Sebelumnya</span>
                 </button>
 
-                <span className="text-xs font-medium text-brand-text/60">
-                  {sections[currentIndex].label}
+                <span
+                  className="
+                    text-[11px]
+                    font-medium
+                    text-brand-muted
+                  "
+                >
+                  {currentIndex + 1} / {sections.length}
                 </span>
 
                 <button

@@ -1,15 +1,12 @@
 import { motion } from "framer-motion";
 import { itemVariants } from "../../animations/variants";
 
-export const SocialLinks = ({
-  links,
-  onExternalClick,
-}) => {
+export const SocialLinks = ({ links, onExternalClick }) => {
   return (
     <motion.div
       variants={itemVariants}
       className="mt-7 flex items-center justify-center gap-3"
-      aria-label="Social media DPM FK UNTAR"
+      aria-label="Media sosial DPM FK UNTAR"
     >
       {links.map((social) => {
         const Icon = social.icon;
@@ -26,12 +23,7 @@ export const SocialLinks = ({
             whileTap={{
               scale: 0.96,
             }}
-            onClick={() =>
-              onExternalClick(
-                social.label,
-                social.url,
-              )
-            }
+            onClick={() => onExternalClick(social.label, social.url)}
             className="
               flex
               h-11
@@ -39,8 +31,10 @@ export const SocialLinks = ({
               items-center
               justify-center
               rounded-xl
+
               border
               border-brand-primary/10
+
               bg-white/80
               text-brand-text
 
@@ -60,10 +54,7 @@ export const SocialLinks = ({
               focus-visible:ring-offset-2
             "
           >
-            <Icon
-              size={19}
-              aria-hidden="true"
-            />
+            <Icon size={19} aria-hidden="true" />
           </motion.button>
         );
       })}

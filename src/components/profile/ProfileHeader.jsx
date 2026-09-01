@@ -26,80 +26,94 @@ export const ProfileHeader = () => {
         text-center
       "
     >
+      {/* Logo */}
       <ProfileLogo src={logo.src} alt={logo.alt} />
 
-      <motion.div variants={profileItemVariants}>
-        <span
+      {/* Identity */}
+      <div className="flex w-full flex-col items-center">
+        <motion.div variants={profileItemVariants}>
+          <span
+            className="
+              inline-flex
+              items-center
+              justify-center
+
+              rounded-full
+              border
+              border-brand-primary/25
+
+              bg-brand-primary/8
+
+              px-3
+              py-1
+
+              text-[10px]
+              font-semibold
+              uppercase
+              tracking-[0.16em]
+              text-brand-primary
+
+              sm:text-[11px]
+            "
+          >
+            {badge}
+          </span>
+        </motion.div>
+
+        <motion.h1
+          variants={profileItemVariants}
           className="
-            inline-flex
-            items-center
-            rounded-full
-            border
-            border-brand-primary/20
-            bg-brand-primary/8
-            px-3
-            py-1
+            mt-2.5
 
-            text-[10px]
-            font-semibold
-            uppercase
-            tracking-[0.14em]
-            text-brand-primary
+            px-4
 
-            sm:text-[11px]
+            text-2xl
+            font-bold
+            tracking-[-0.025em]
+            text-brand-text
+
+            sm:text-[30px]
           "
         >
-          {badge}
-        </span>
-      </motion.div>
+          {name}
+        </motion.h1>
 
-      <motion.h1
-        variants={profileItemVariants}
-        className="
-          mt-3
-          px-4
-          text-2xl
-          font-bold
-          tracking-tight
-          text-brand-text
+        <motion.div
+          variants={profileDividerVariants}
+          aria-hidden="true"
+          className="
+            mt-2.5
 
-          sm:text-3xl
-        "
-      >
-        {name}
-      </motion.h1>
+            h-px
+            w-20
 
-      <motion.div
-        variants={profileDividerVariants}
-        aria-hidden="true"
-        className="
-          mt-3
-          h-px
-          w-28
-          origin-center
-          bg-linear-to-r
-          from-transparent
-          via-brand-primary/50
-          to-transparent
+            origin-center
 
-          sm:w-36
-        "
-      />
+            bg-linear-to-r
+            from-transparent
+            via-brand-primary/50
+            to-transparent
 
+            sm:w-24
+          "
+        />
+      </div>
+
+      {/* Description */}
       <motion.p
         variants={profileItemVariants}
         className="
-          mt-4
-          max-w-sm
-          px-5
+          mt-3.5
 
-          text-sm
+          max-w-[360px]
+          px-4
+
+          text-[13px]
           font-normal
           leading-6
-          text-brand-text/70
+          text-brand-text/75
 
-          sm:px-4
-          sm:text-[15px]
+          sm:text-sm
         "
       >
         {description}

@@ -5,39 +5,90 @@ import { visionMissionConfig } from "../../../config/visionMission";
 export const MissionSection = () => {
   return (
     <section aria-labelledby="mission-heading">
-      <h3
-        id="mission-heading"
-        className="text-sm font-semibold text-brand-primary"
-      >
-        Misi
-      </h3>
+      <div className="flex items-center gap-2">
+        <span
+          aria-hidden="true"
+          className="
+            h-1.5
+            w-1.5
+            rounded-full
+            bg-brand-primary
+          "
+        />
 
-      <ul
-        className="
-          mt-3
-          space-y-3
-          rounded-xl
-          border
-          border-brand-primary/10
-          bg-brand-bg/50
-          p-4
-        "
-      >
-        {visionMissionConfig.missions.map((mission) => (
-          <li key={mission} className="flex items-start gap-2.5">
-            <FiCheckCircle
-              aria-hidden="true"
+        <h3
+          id="mission-heading"
+          className="
+            text-sm
+            font-semibold
+            text-brand-primary
+          "
+        >
+          Misi
+        </h3>
+      </div>
+
+      <ul className="mt-3 space-y-2.5">
+        {visionMissionConfig.missions.map((mission, index) => (
+          <li
+            key={mission}
+            className="
+              flex
+              items-start
+              gap-3
+
+              rounded-xl
+              border
+              border-brand-primary/10
+
+              bg-white
+              p-3.5
+            "
+          >
+            <span
               className="
-                mt-0.5
+                flex
+                h-7
+                w-7
                 shrink-0
+                items-center
+                justify-center
+
+                rounded-lg
+                bg-brand-primary/10
+
                 text-brand-primary
               "
-              size={15}
-            />
-
-            <span className="text-sm leading-5 text-brand-text/80">
-              {mission}
+            >
+              <FiCheckCircle aria-hidden="true" size={15} />
             </span>
+
+            <div className="min-w-0">
+              <span
+                className="
+                  text-[10px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.12em]
+                  text-brand-primary
+                "
+              >
+                Misi {index + 1}
+              </span>
+
+              <p
+                className="
+                  mt-1
+                  text-[13px]
+                  leading-5
+                  text-brand-text/80
+
+                  sm:text-sm
+                "
+              >
+                {mission}
+              </p>
+            </div>
           </li>
         ))}
       </ul>

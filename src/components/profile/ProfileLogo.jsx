@@ -26,10 +26,11 @@ export const ProfileLogo = ({ src, alt }) => {
         className="
           absolute
           -inset-2
+
           rounded-full
-          bg-linear-to-tr
-          from-brand-primary/20
-          to-brand-accent/20
+
+          bg-brand-primary/10
+
           blur-xl
         "
       />
