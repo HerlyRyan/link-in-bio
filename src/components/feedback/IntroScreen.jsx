@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 
 export const LoadingScreen = () => {
-  const logoUrl = "https://bio.linkcdn.cc/upload/8041104zbsdgf/2026041105/177588424500064516.jpg";
+  const logoUrl =
+    "https://bio.linkcdn.cc/upload/8041104zbsdgf/2026041105/177588424500064516.jpg";
 
   return (
     <motion.div
