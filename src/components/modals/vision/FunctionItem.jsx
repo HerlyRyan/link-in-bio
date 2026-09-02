@@ -1,35 +1,48 @@
-export const FunctionItem = ({
-  number,
-  title,
-  description,
-}) => {
+export const FunctionItem = ({ number, title, description }) => {
   return (
     <article
       className="
         rounded-xl
-        border
-        border-brand-primary/10
+
+        border-2
+        border-brand-text/80
+
         bg-white
+
         p-3.5
+
+        shadow-[2px_2px_0_0_var(--color-brand-text)]
+
+        sm:p-4
       "
     >
-      <div className="flex items-start gap-3">
+      <div
+        className="
+          flex
+          items-start
+          gap-3
+        "
+      >
         <span
           aria-hidden="true"
           className="
             flex
-            h-7
-            w-7
+            h-8
+            w-8
             shrink-0
             items-center
             justify-center
 
             rounded-lg
-            bg-brand-primary/10
+
+            border-2
+            border-brand-text/80
+
+            bg-brand-primary
 
             text-xs
             font-bold
-            text-brand-primary
+            text-white
           "
         >
           {number}
@@ -39,7 +52,7 @@ export const FunctionItem = ({
           <h4
             className="
               text-[13px]
-              font-semibold
+              font-bold
               text-brand-text
 
               sm:text-sm
@@ -51,9 +64,11 @@ export const FunctionItem = ({
           <p
             className="
               mt-1
+
               text-xs
+              font-medium
               leading-5
-              text-brand-text/70
+              text-brand-text/75
 
               sm:text-[13px]
             "

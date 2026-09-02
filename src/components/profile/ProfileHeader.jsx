@@ -6,7 +6,6 @@ import { profileConfig } from "../../config/profile";
 import {
   profileHeaderVariants,
   profileItemVariants,
-  profileDividerVariants,
 } from "../../animations/variants";
 
 export const ProfileHeader = () => {
@@ -18,106 +17,120 @@ export const ProfileHeader = () => {
       initial="hidden"
       animate="visible"
       className="
-        z-10
-        flex
+        grid
         w-full
-        flex-col
-        items-center
-        text-center
+        grid-cols-1
+        gap-3
+
+        md:grid-cols-[180px_1fr]
+        md:gap-4
       "
     >
-      {/* Logo */}
-      <ProfileLogo src={logo.src} alt={logo.alt} />
+      {/* Logo Card */}
+      <motion.div
+        variants={profileItemVariants}
+        className="
+          flex
+          min-h-36
+          items-center
+          justify-center
 
-      {/* Identity */}
-      <div className="flex w-full flex-col items-center">
-        <motion.div variants={profileItemVariants}>
+          rounded-2xl
+          border-2
+          border-brand-text/85
+
+          bg-brand-secondary/20
+          p-5
+
+          shadow-[3px_3px_0_0_var(--color-brand-text)]
+
+          md:min-h-44
+        "
+      >
+        <ProfileLogo src={logo.src} alt={logo.alt} />
+      </motion.div>
+
+      {/* Identity Card */}
+      <motion.div
+        variants={profileItemVariants}
+        className="
+          flex
+          min-h-44
+          flex-col
+          justify-center
+
+          rounded-2xl
+          border-2
+          border-brand-text/85
+
+          bg-brand-card
+
+          p-5
+
+          shadow-[4px_4px_0_0_var(--color-brand-text)]
+
+          sm:p-6
+        "
+      >
+        <div>
           <span
             className="
               inline-flex
               items-center
               justify-center
 
-              rounded-full
-              border
-              border-brand-primary/25
+              rounded-lg
+              border-2
+              border-brand-text/80
 
-              bg-brand-primary/8
+              bg-brand-primary
 
               px-3
-              py-1
+              py-1.5
 
               text-[10px]
-              font-semibold
+              font-bold
               uppercase
-              tracking-[0.16em]
-              text-brand-primary
+              tracking-[0.14em]
+              text-white
 
               sm:text-[11px]
             "
           >
             {badge}
           </span>
-        </motion.div>
+        </div>
 
-        <motion.h1
-          variants={profileItemVariants}
+        <h1
           className="
-            mt-2.5
-
-            px-4
+            mt-3
 
             text-2xl
             font-bold
-            tracking-[-0.025em]
+            tracking-tight
             text-brand-text
 
-            sm:text-[30px]
+            sm:text-3xl
           "
         >
           {name}
-        </motion.h1>
+        </h1>
 
-        <motion.div
-          variants={profileDividerVariants}
-          aria-hidden="true"
+        <p
           className="
-            mt-2.5
+            mt-3
+            max-w-xl
 
-            h-px
-            w-20
+            text-[13px]
+            leading-6
+            text-brand-text/75
 
-            origin-center
-
-            bg-linear-to-r
-            from-transparent
-            via-brand-primary/50
-            to-transparent
-
-            sm:w-24
+            sm:text-sm
           "
-        />
-      </div>
-
-      {/* Description */}
-      <motion.p
-        variants={profileItemVariants}
-        className="
-          mt-3.5
-
-          max-w-[360px]
-          px-4
-
-          text-[13px]
-          font-normal
-          leading-6
-          text-brand-text/75
-
-          sm:text-sm
-        "
-      >
-        {description}
-      </motion.p>
+        >
+          {description}
+        </p>
+      </motion.div>
     </motion.header>
   );
 };

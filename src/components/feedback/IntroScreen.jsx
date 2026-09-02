@@ -1,70 +1,297 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
-export const LoadingScreen = () => {
-  const logoUrl =
-    "https://bio.linkcdn.cc/upload/8041104zbsdgf/2026041105/177588424500064516.jpg";
+export const IntroScreen = () => {
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <motion.div
-      key="loader"
+      key="intro-screen"
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, scale: 1.02 }}
-      transition={{ duration: 0.4, ease: "easeInOut" }}
-      className="fixed inset-0 z-99999 flex flex-col items-center justify-center bg-brand-bg/95 backdrop-blur-md w-full h-screen"
-    >
-      <div className="relative flex items-center justify-center">
-        {/* Cincin Spinner Luar */}
-        <motion.svg
-          className="absolute h-28 w-28 sm:h-32 sm:w-32"
-          viewBox="0 0 100 100"
-          animate={{ rotate: 360 }}
-          transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-        >
-          <circle
-            cx="50"
-            cy="50"
-            r="44"
-            className="text-brand-secondary/30"
-            stroke="currentColor"
-            strokeWidth="3"
-            fill="none"
-          />
-          <motion.circle
-            cx="50"
-            cy="50"
-            r="44"
-            className="text-brand-primary"
-            stroke="currentColor"
-            strokeWidth="3"
-            fill="none"
-            strokeLinecap="round"
-            strokeDasharray="276"
-            strokeDashoffset="60"
-          />
-        </motion.svg>
+      exit={
+        shouldReduceMotion
+          ? { opacity: 0 }
+          : {
+              opacity: 0,
+              scale: 1.01,
+            }
+      }
+      transition={{
+        duration: shouldReduceMotion ? 0.15 : 0.3,
+        ease: "easeOut",
+      }}
+      className="
+        fixed
+        inset-0
+        z-99999
 
-        {/* Logo di Tengah dengan Efek Berdenyut (Pulse) */}
-        <motion.div
-          animate={{ scale: [0.95, 1.05, 0.95] }}
-          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-          className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden shadow-md border-2 border-white/80 bg-white flex items-center justify-center"
-        >
-          <img
-            src={logoUrl}
-            alt="Logo DPM FK UNTAR"
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
+        flex
+        min-h-dvh
+        w-full
+        items-center
+        justify-center
+
+        overflow-hidden
+
+        bg-brand-bg
+
+        px-6
+      "
+    >
+      {/* Background decoration */}
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          overflow-hidden
+        "
+      >
+        <div
+          className="
+            absolute
+            inset-0
+
+            bg-linear-to-br
+            from-brand-bg
+            via-[#F9D6E5]
+            to-brand-secondary/20
+          "
+        />
+
+        <div
+          className="
+            absolute
+            inset-0
+            opacity-[0.12]
+          "
+          style={{
+            backgroundImage:
+              "radial-gradient(currentColor 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+            color: "var(--color-brand-text)",
+          }}
+        />
       </div>
 
-      {/* Teks Indikator Opsional yang Bersih */}
       <motion.div
-        initial={{ opacity: 0, y: 5 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-        className="mt-6 text-xs sm:text-sm font-semibold tracking-wider text-brand-primary/80 uppercase"
+        initial={
+          shouldReduceMotion
+            ? { opacity: 0 }
+            : {
+                opacity: 0,
+                y: 12,
+              }
+        }
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.35,
+          ease: "easeOut",
+        }}
+        className="
+          relative
+          z-10
+
+          flex
+          flex-col
+          items-center
+          text-center
+        "
       >
-        DPM FK UNTAR
+        {/* Logo Card */}
+        <motion.div
+          initial={
+            shouldReduceMotion
+              ? false
+              : {
+                  rotate: -2,
+                  scale: 0.94,
+                }
+          }
+          animate={{
+            rotate: 0,
+            scale: 1,
+          }}
+          transition={{
+            duration: 0.4,
+            ease: "easeOut",
+          }}
+          className="
+            flex
+            h-28
+            w-28
+            items-center
+            justify-center
+
+            rounded-2xl
+
+            border-2
+            border-brand-text/85
+
+            bg-white
+
+            p-3
+
+            shadow-[5px_5px_0_0_var(--color-brand-text)]
+
+            sm:h-32
+            sm:w-32
+          "
+        >
+          <div
+            className="
+              h-full
+              w-full
+              overflow-hidden
+
+              rounded-full
+
+              border-2
+              border-brand-text/80
+
+              bg-white
+            "
+          >
+            <img
+              src="/icons/dpm-logo.png"
+              alt="Logo DPM FK UNTAR"
+              className="
+                h-full
+                w-full
+                object-cover
+              "
+              decoding="async"
+            />
+          </div>
+        </motion.div>
+
+        {/* Identity */}
+        <motion.div
+          initial={
+            shouldReduceMotion
+              ? { opacity: 0 }
+              : {
+                  opacity: 0,
+                  y: 8,
+                }
+          }
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.3,
+            delay: shouldReduceMotion ? 0 : 0.12,
+          }}
+          className="mt-6"
+        >
+          <span
+            className="
+              inline-flex
+              items-center
+              justify-center
+
+              rounded-lg
+
+              border-2
+              border-brand-text/80
+
+              bg-brand-primary
+
+              px-3
+              py-1.5
+
+              text-[10px]
+              font-bold
+              uppercase
+              tracking-[0.14em]
+              text-white
+
+              shadow-[2px_2px_0_0_var(--color-brand-text)]
+            "
+          >
+            Dewan Perwakilan Mahasiswa
+          </span>
+
+          <h1
+            className="
+              mt-4
+
+              text-xl
+              font-bold
+              tracking-tight
+              text-brand-text
+
+              sm:text-2xl
+            "
+          >
+            DPM FK UNTAR
+          </h1>
+
+          <p
+            className="
+              mt-1
+
+              text-xs
+              font-medium
+              text-brand-text/65
+
+              sm:text-sm
+            "
+          >
+            Universitas Tarumanagara
+          </p>
+        </motion.div>
+
+        {/* Progress */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            delay: shouldReduceMotion ? 0 : 0.25,
+            duration: 0.25,
+          }}
+          className="
+            mt-7
+            flex
+            items-center
+            gap-1.5
+          "
+          aria-hidden="true"
+        >
+          {[0, 1, 2].map((item) => (
+            <motion.span
+              key={item}
+              animate={
+                shouldReduceMotion
+                  ? undefined
+                  : {
+                      y: [0, -3, 0],
+                    }
+              }
+              transition={{
+                duration: 0.8,
+                repeat: Infinity,
+                delay: item * 0.12,
+                ease: "easeInOut",
+              }}
+              className="
+                h-2
+                w-2
+
+                rounded-sm
+
+                border
+                border-brand-text/70
+
+                bg-brand-primary
+              "
+            />
+          ))}
+        </motion.div>
       </motion.div>
     </motion.div>
   );

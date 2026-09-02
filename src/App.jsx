@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { AnimatePresence } from "framer-motion";
 
-import { LoadingScreen } from "./components/feedback/IntroScreen";
+import { IntroScreen } from "./components/feedback/IntroScreen";
 import { BackgroundWrapper } from "./components/layout/BackgroundWrapper";
 import { LinkBioContent } from "./components/layout/LinkBioContent";
 
@@ -24,24 +24,28 @@ export default function App() {
   } = useExternalLink();
 
   const [showIntro, setShowIntro] = useState(() => {
-    return sessionStorage.getItem("dpm-intro-seen") !== "true";
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    return window.sessionStorage.getItem("dpm-intro-seen") !== "true";
   });
 
   useEffect(() => {
     if (!showIntro) return;
 
-    const timer = setTimeout(() => {
+    const timer = window.setTimeout(() => {
       sessionStorage.setItem("dpm-intro-seen", "true");
       setShowIntro(false);
     }, 900);
 
-    return () => clearTimeout(timer);
+    return () => window.clearTimeout(timer);
   }, [showIntro]);
 
   return (
     <AnimatePresence mode="wait">
       {showIntro ? (
-        <LoadingScreen key="loading" />
+        <IntroScreen key="intro" />
       ) : (
         <BackgroundWrapper key="content">
           <LinkBioContent
@@ -62,6 +66,7 @@ export default function App() {
             onConfirm={confirmExternalLink}
             linkTitle={externalLink.title}
             linkUrl={externalLink.url}
+            type={externalLink.type}
           />
         </BackgroundWrapper>
       )}

@@ -8,44 +8,40 @@ export const ProfileLogo = ({ src, alt }) => {
       variants={{
         hidden: {
           opacity: 0,
-          scale: shouldReduceMotion ? 1 : 0.92,
+          scale: shouldReduceMotion ? 1 : 0.94,
         },
         visible: {
           opacity: 1,
           scale: 1,
           transition: {
-            duration: 0.45,
+            duration: 0.4,
             ease: "easeOut",
           },
         },
       }}
-      className="relative mb-4"
+      className="
+        relative
+        flex
+        items-center
+        justify-center
+      "
     >
-      <div
-        aria-hidden="true"
-        className="
-          absolute
-          -inset-2
-
-          rounded-full
-
-          bg-brand-primary/10
-
-          blur-xl
-        "
-      />
-
       <div
         className="
           relative
+
           h-24
           w-24
+
           overflow-hidden
           rounded-full
-          border-4
-          border-white
+
+          border-2
+          border-brand-text/85
+
           bg-white
-          shadow-md
+
+          shadow-[3px_3px_0_0_var(--color-brand-text)]
 
           sm:h-28
           sm:w-28
@@ -54,7 +50,11 @@ export const ProfileLogo = ({ src, alt }) => {
         <img
           src={src}
           alt={alt}
-          className="h-full w-full object-cover"
+          className="
+            h-full
+            w-full
+            object-cover
+          "
           decoding="async"
         />
       </div>
