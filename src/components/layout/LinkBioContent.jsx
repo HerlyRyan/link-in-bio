@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { ProfileHeader } from "../profile/ProfileHeader";
 import { LinkItem } from "../links/LinkItem";
 import { FooterComponent } from "./Footer";
-import { ImageCarouselCard } from "../carousel/ImageCarouselCard";
-import { carouselItems } from "../../config/carousel";
+import { BentoGallery } from "../gallery/BentoGallery";
+import { galleryItems } from "../../config/gallery";
 
 import {
   containerVariants,
@@ -70,7 +70,7 @@ export const LinkBioContent = ({
           variants={itemVariants}
           className="col-span-2 md:col-span-6"
         >
-          <ImageCarouselCard items={carouselItems} />
+          <BentoGallery items={galleryItems} />
         </motion.div>
 
         {/* Main Links */}
