@@ -39,7 +39,7 @@ export const ProfileHeader = () => {
           border-2
           border-brand-text/85
 
-          bg-brand-secondary/20
+          bg-brand-card
           p-5
 
           shadow-[3px_3px_0_0_var(--color-brand-text)]

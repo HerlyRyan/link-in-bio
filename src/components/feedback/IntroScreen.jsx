@@ -31,7 +31,6 @@ export const IntroScreen = () => {
         justify-center
 
         overflow-hidden
-
         bg-brand-bg
 
         px-6
@@ -47,23 +46,69 @@ export const IntroScreen = () => {
           overflow-hidden
         "
       >
+        {/* Base */}
+        <div className="absolute inset-0 bg-brand-bg" />
+
+        {/* Botanical glow */}
         <div
           className="
             absolute
-            inset-0
+            -left-40
+            -top-40
 
-            bg-linear-to-br
-            from-brand-bg
-            via-[#F9D6E5]
-            to-brand-secondary/20
+            h-120
+            w-120
+
+            rounded-full
+            bg-brand-primary/18
+
+            blur-[120px]
           "
         />
 
+        {/* Warm glow */}
+        <div
+          className="
+            absolute
+            -bottom-44
+            -right-40
+
+            h-128
+            w-lg
+
+            rounded-full
+            bg-brand-accent/22
+
+            blur-[130px]
+          "
+        />
+
+        {/* Center soft light */}
+        <div
+          className="
+            absolute
+            left-1/2
+            top-1/2
+
+            h-128
+            w-lg
+
+            -translate-x-1/2
+            -translate-y-1/2
+
+            rounded-full
+            bg-brand-card/35
+
+            blur-[130px]
+          "
+        />
+
+        {/* Dot pattern */}
         <div
           className="
             absolute
             inset-0
-            opacity-[0.12]
+            opacity-[0.08]
           "
           style={{
             backgroundImage:
@@ -131,7 +176,7 @@ export const IntroScreen = () => {
             border-2
             border-brand-text/85
 
-            bg-white
+            bg-brand-card
 
             p-3
 
@@ -152,7 +197,7 @@ export const IntroScreen = () => {
               border-2
               border-brand-text/80
 
-              bg-white
+              bg-brand-card
             "
           >
             <img
@@ -161,7 +206,7 @@ export const IntroScreen = () => {
               className="
                 h-full
                 w-full
-                object-cover
+                object-contain
               "
               decoding="async"
             />
@@ -236,8 +281,8 @@ export const IntroScreen = () => {
               mt-1
 
               text-xs
-              font-medium
-              text-brand-text/65
+              font-semibold
+              text-brand-text/70
 
               sm:text-sm
             "

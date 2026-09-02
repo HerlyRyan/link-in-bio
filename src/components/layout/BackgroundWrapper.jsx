@@ -32,16 +32,83 @@ export const BackgroundWrapper = ({ children }) => {
           overflow-hidden
         "
       >
-        {/* Base gradient */}
+        {/* Base */}
+        <div className="absolute inset-0 bg-brand-bg" />
+
+        {/* Botanical glow - top left */}
         <div
           className="
             absolute
-            inset-0
+            -left-40
+            -top-40
 
-            bg-linear-to-br
-            from-brand-bg
-            via-[#F9D6E5]
-            to-brand-secondary/20
+            h-128
+            w-lg
+
+            rounded-full
+
+            bg-brand-primary/18
+
+            blur-[120px]
+          "
+        />
+
+        {/* Warm glow - bottom right */}
+        <div
+          className="
+            absolute
+            -bottom-48
+            -right-40
+
+            h-136
+            w-136
+
+            rounded-full
+
+            bg-brand-accent/22
+
+            blur-[130px]
+          "
+        />
+
+        {/* Dark botanical depth */}
+        <div
+          className="
+            absolute
+            left-[58%]
+            top-[12%]
+
+            h-72
+            w-72
+
+            -translate-x-1/2
+
+            rounded-full
+
+            bg-brand-dark/8
+
+            blur-[110px]
+          "
+        />
+
+        {/* Soft center light */}
+        <div
+          className="
+            absolute
+            left-1/2
+            top-1/2
+
+            h-144
+            w-xl
+
+            -translate-x-1/2
+            -translate-y-1/2
+
+            rounded-full
+
+            bg-brand-card/35
+
+            blur-[140px]
           "
         />
 
@@ -50,7 +117,8 @@ export const BackgroundWrapper = ({ children }) => {
           className="
             absolute
             inset-0
-            opacity-[0.12]
+
+            opacity-[0.08]
           "
           style={{
             backgroundImage:
@@ -60,42 +128,43 @@ export const BackgroundWrapper = ({ children }) => {
           }}
         />
 
-        {/* Top-left decoration */}
+        {/* Subtle frame accents */}
         <div
           className="
             absolute
-            -left-32
-            -top-32
+            left-8
+            top-8
 
-            h-96
-            w-96
+            h-24
+            w-24
 
-            rounded-full
-            bg-brand-primary/10
+            rounded-4xl
 
-            blur-[100px]
+            border
+            border-brand-text/5
+
+            rotate-12
           "
         />
 
-        {/* Bottom-right decoration */}
         <div
           className="
             absolute
-            -bottom-32
-            -right-32
+            bottom-10
+            right-10
 
-            h-96
-            w-96
+            h-32
+            w-32
 
             rounded-full
-            bg-brand-accent/10
 
-            blur-[100px]
+            border
+            border-brand-text/5
           "
         />
       </div>
 
-      {/* Main Content Container */}
+      {/* Main Content */}
       <div
         className="
           relative

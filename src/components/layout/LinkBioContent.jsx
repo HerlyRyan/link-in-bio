@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/immutability */
 import { motion } from "framer-motion";
 
 import { ProfileHeader } from "../profile/ProfileHeader";

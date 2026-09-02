@@ -27,58 +27,54 @@ export const LinkItem = ({
   const getCardClasses = () => {
     if (isSpecial) {
       return `
-        bg-brand-primary
-        text-white
-
-        hover:bg-brand-primary/90
-      `;
+      bg-brand-primary
+      text-white
+      hover:bg-brand-primary/90
+    `;
     }
 
     if (variant === "secondary") {
       return `
-        bg-brand-secondary/25
-        text-brand-text
-
-        hover:bg-brand-secondary/35
-      `;
+      bg-brand-secondary
+      text-brand-text
+      hover:bg-brand-secondary/90
+    `;
     }
 
     if (variant === "social") {
       return `
-        bg-brand-accent/10
-        text-brand-text
-
-        hover:bg-brand-accent/20
-      `;
+      bg-brand-accent
+      text-brand-text
+      hover:bg-brand-accent/90
+    `;
     }
 
     return `
-      bg-brand-card
-      text-brand-text
-
-      hover:bg-brand-secondary/20
-    `;
+    bg-brand-card
+    text-brand-text
+    hover:bg-brand-secondary/60
+  `;
   };
 
   const getIconClasses = () => {
     if (isSpecial) {
       return `
-        bg-white
-        text-brand-primary
-      `;
+      bg-brand-card
+      text-brand-primary
+    `;
     }
 
     if (variant === "social") {
       return `
-        bg-brand-accent/15
-        text-brand-text
-      `;
+      bg-brand-card
+      text-brand-text
+    `;
     }
 
     return `
-      bg-white
-      text-brand-primary
-    `;
+    bg-brand-card
+    text-brand-primary
+  `;
   };
 
   const trailingIcon = renderTrailingIcon();
