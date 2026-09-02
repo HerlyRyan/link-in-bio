@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { ProfileHeader } from "../profile/ProfileHeader";
 import { LinkItem } from "../links/LinkItem";
 import { FooterComponent } from "./Footer";
+import { ImageCarouselCard } from "../carousel/ImageCarouselCard";
+import { carouselItems } from "../../config/carousel";
 
 import {
   containerVariants,
@@ -63,6 +65,13 @@ export const LinkBioContent = ({
         >
           <ProfileHeader />
         </div>
+
+        <motion.div
+          variants={itemVariants}
+          className="col-span-2 md:col-span-6"
+        >
+          <ImageCarouselCard items={carouselItems} />
+        </motion.div>
 
         {/* Main Links */}
         {links.map((link, index) => {
